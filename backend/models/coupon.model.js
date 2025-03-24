@@ -11,6 +11,10 @@ const couponSchema = new mongoose.Schema({
         enum: ['unclaimed', 'claimed'], 
         default: 'unclaimed' 
     },
+    available: {
+        type: Boolean,
+        default: true
+    },
     claimedBy: { 
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -19,7 +23,10 @@ const couponSchema = new mongoose.Schema({
     claimedAt: { 
         type: Date, 
         default: null 
-    },  
+    }
+},{
+    timestamps: true,
+    versionKey: false
 })
 
 
