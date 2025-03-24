@@ -4,6 +4,7 @@ require('dotenv').config();
 const dbConnect = require('./utils/dbConnect');
 
 const authRoute = require('./routes/auth.route');
+const couponRoute = require('./routes/coupon.route');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 
 
 app.use("/auth", authRoute);
+app.use("/coupon", couponRoute);
 
 
 app.all("*", (req, res) => {
