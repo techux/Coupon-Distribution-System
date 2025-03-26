@@ -1,5 +1,6 @@
 const express = require('express');
 require('dotenv').config();
+const cors = require('cors');
 
 const dbConnect = require('./utils/dbConnect');
 
@@ -9,6 +10,7 @@ const couponRoute = require('./routes/coupon.route');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
@@ -32,7 +34,7 @@ app.all("*", (req, res) => {
 })
 
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`[INFO] Server is running on port ${PORT}`);
     dbConnect()
 })

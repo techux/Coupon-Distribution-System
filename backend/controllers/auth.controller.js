@@ -32,7 +32,8 @@ const loginController = async (req, res) => {
         const accessToken = jwt.sign(
             { 
                 id: user._id ,
-                role: user.role
+                role: user.role,
+                email: user.email
             },
             process.env.JWT_SECRET_KEY,
             {
@@ -86,7 +87,7 @@ const registerController = async (req, res) => {
 
         const result = await User.create({name, email, password:hashedPassword}) ;
 
-        return res.status(201).json({
+        return res.status(200).json({
             status: "ok",
             message: "User registered successfull, You may login now",
             userId: result._id

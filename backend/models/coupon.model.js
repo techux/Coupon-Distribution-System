@@ -6,6 +6,10 @@ const couponSchema = new mongoose.Schema({
         required: true, 
         unique: true 
     },
+    description: {
+        type: String,
+        required: true
+    },
     status: { 
         type: String, 
         enum: ['unclaimed', 'claimed'], 
@@ -16,8 +20,7 @@ const couponSchema = new mongoose.Schema({
         default: true
     },
     claimedBy: { 
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
         default: null 
     }, 
     claimedAt: { 
